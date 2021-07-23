@@ -21,6 +21,13 @@ namespace Task1.Repositories
         {
             IMongoDatabase database = mongoClient.GetDatabase(databaseName);
             _taxPayersCollection = database.GetCollection<TaxPayer>(collectionName);
+
+            var indexKeysDefinition1 = Builders<TaxPayer>.IndexKeys.Ascending(t => t.CreatedDate);
+            var indexKeysDefinition2 = Builders<TaxPayer>.IndexKeys.Text(t => t.Address.City);
+            var indexKeysDefinition3 = Builders<TaxPayer>.IndexKeys.Text(t => t.Country);
+            _taxPayersCollection.Indexes.CreateOneAsync(new CreateIndexModel<TaxPayer>(indexKeysDefinition1));
+            _taxPayersCollection.Indexes.CreateOneAsync(new CreateIndexModel<TaxPayer>(indexKeysDefinition2));
+            _taxPayersCollection.Indexes.CreateOneAsync(new CreateIndexModel<TaxPayer>(indexKeysDefinition3));
         }
         public async Task CreateTaxPayerAsync(TaxPayer taxPayer)
         {
