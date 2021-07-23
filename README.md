@@ -5,4 +5,4 @@ Task One
 Since its a basic CRUD was implemented, the basic CRUD functionality and the little advanced MongoDb features implemented <br/>
 were combined into one repository. <br/>
 A local installation of MongoDb was used and no replica sets were created, so transactions were show cased here. <br/>
-Aggregation pipeline advanced feature was show cased to an extent in this task. 
+Aggregation pipeline advanced feature was show cased to an extent in this task. *
