@@ -40,7 +40,7 @@ namespace Task1.Controllers
             return taxPayers;
         }
 
-        // GET /taxPayers/GetNumberOfTaxPayersByState
+        // GET /taxPayers/GetNumberOfTaxPayersByCountry
 
         [HttpGet("GetNumberOfTaxPayersByCountry")]
         public async Task<IEnumerable<dynamic>> GetNumberOfTaxPayersByCountry()
@@ -83,6 +83,7 @@ namespace Task1.Controllers
         }
 
         // POST /taxPayers/
+
         [HttpPost]
         public async Task<ActionResult<TaxPayerDto>> CreateTaxPayerAsync([FromBody] CreateTaxPayerDto taxPayerDto)
         {
@@ -131,6 +132,7 @@ namespace Task1.Controllers
         }
 
         // DELETE /taxPayers/{id}
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTaxPayerAsync(Guid id)
         {
@@ -147,8 +149,9 @@ namespace Task1.Controllers
         }
 
         // POST /taxPayers/CreateManyTaxPayers
+
         [HttpPost("CreateManyTaxPayers")]
-        public async Task<ActionResult> CreateTaxPayersAsync(List<TaxPayerDto> taxPayerDtos)
+        public async Task<ActionResult> CreateTaxPayersAsync([FromBody] List<TaxPayerDto> taxPayerDtos)
         {
             List<TaxPayer> newTaxPayers = new List<TaxPayer>();
 
